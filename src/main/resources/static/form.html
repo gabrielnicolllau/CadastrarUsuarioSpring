@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Usuário</title>
+</head>
+
+<body>
+    <h1>Cadastrar Novo Usuário</h1>
+    <form id="usuarioForm">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required /><br />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required /><br />
+
+        <button type="submit">Salvar</button>
+    </form>
+    <br>
+    <a href="./list.html">Voltar para a listagem</a>
+
+    <script>
+        // Função para salvar o usuário via Fetch API
+        document.getElementById('usuarioForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+
+            const usuario = {
+                nome: nome,
+                email: email
+            };
+
+            // Método para enviar os dados em JSON que vai acessar a API
+            fetch('http://localhost:8080/usuarios', {
+                method: 'POST', // Método HTTP
+                headers: {
+                    'Content-Type': 'application/json' // Informando que estamos enviando JSON
+                },
+                body: JSON.stringify(usuario) // Envia o objeto 'usuario' diretamente como JSON
+            })
+                .then(function (res) {
+                    console.log(res);
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
+        });
+    </script>
+
+</body>
+
+</html>
