@@ -66,6 +66,8 @@ document.getElementById('usuarioForm').addEventListener('submit', async function
         })
             .then(function (res) {
                 if (res.ok) {
+
+                    window.alert('Usuário incluído com sucesso!');
                     // Redireciona para a lista após o sucesso
                     window.location.href = './list.html';
                 } else {
