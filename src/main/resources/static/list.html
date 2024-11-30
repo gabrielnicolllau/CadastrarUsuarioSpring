@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listagem de Usuários</title>
+    <link rel="stylesheet" href="./css/list.css">
 </head>
 
 <body>
@@ -27,7 +28,7 @@
         // Função para listar os usuários via Fetch API
         async function listarUsuarios() {
             try {
-                const response = await fetch('/api/usuarios');
+                const response = await fetch('http://localhost:8080/usuarios');
                 const usuarios = await response.json();
                 const tableBody = document.getElementById('usuarioTableBody');
 
