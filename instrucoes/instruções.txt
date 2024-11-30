@@ -1,0 +1,11 @@
+COMO RODAR O PROJETO E ACESSAR A INDEX
+
+- Utilizei o Vscode para desenvolvedor o projeto
+
+1. Ter instalado o Extension Pack for Java e o Spring Boot Extension Pack no Vscode
+
+2. Rodar o projeto, se instalou a extensão do spring Boot, só clicar na dashboard e rodar o projeto
+
+3. Quando o projeto estiver rodando, só abrir o navegador e digitar a seguinte url: http://localhost:8080/index.html
+
+5. Ela vai abrir a index do projeto, nisso é só utilizar as funcionalidades

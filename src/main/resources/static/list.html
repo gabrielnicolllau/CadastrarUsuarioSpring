@@ -22,12 +22,11 @@
             </tr>
         </thead>
         <tbody id="listaDeUsuarios">
-            <!-- Aqui vai os usuarios -->
+
         </tbody>
     </table>
 
     <script>
-        // Função para listar os usuários via Fetch API
         async function listarUsuarios() {
             try {
                 const response = await fetch('http://localhost:8080/usuarios');
