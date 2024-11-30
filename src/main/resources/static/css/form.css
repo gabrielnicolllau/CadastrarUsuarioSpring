@@ -109,3 +109,15 @@ input:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
+
+/* Destacar campos com erro */
+input:invalid,
+textarea:invalid {
+    border: 1px solid red;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
