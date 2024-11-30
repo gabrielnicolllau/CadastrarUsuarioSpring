@@ -20,10 +20,8 @@
         <button type="submit">Salvar</button>
     </form>
     <br>
-    <a href="./list.html">Voltar para a listagem</a>
 
     <script>
-        // Função para salvar o usuário via Fetch API
         document.getElementById('usuarioForm').addEventListener('submit', async function (event) {
             event.preventDefault();
 
@@ -35,22 +33,29 @@
                 email: email
             };
 
-            // Método para enviar os dados em JSON que vai acessar a API
-            fetch('http://localhost:8080/usuarios', {
-                method: 'POST', // Método HTTP
-                headers: {
-                    'Content-Type': 'application/json' // Informando que estamos enviando JSON
-                },
-                body: JSON.stringify(usuario) // Envia o objeto 'usuario' diretamente como JSON
-            })
-                .then(function (res) {
-                    console.log(res);
-                })
-                .catch(function (err) {
-                    console.log(err);
+            try {
+                const response = await fetch('http://localhost:8080/usuarios', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(usuario)
                 });
+
+                if (response.ok) {
+                    // Redireciona para a página de listagem após sucesso
+                    window.location.href = './list.html';
+                } else {
+                    console.error('Erro ao salvar usuário:', response.statusText);
+                    alert('Não foi possível salvar o usuário. Verifique os dados e tente novamente.');
+                }
+            } catch (error) {
+                console.error('Erro ao realizar o request:', error);
+                alert('Ocorreu um erro ao salvar o usuário. Por favor, tente novamente.');
+            }
         });
     </script>
+
 
 </body>
 
