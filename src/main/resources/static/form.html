@@ -12,50 +12,61 @@
     <h1>Cadastrar Novo Usuário</h1>
     <form id="usuarioForm">
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required /><br />
+        <input type="text" id="nome" name="nome" placeholder="Digite o nome completo" required /><br />
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required /><br />
+        <input type="email" id="email" name="email" placeholder="Digite o email" required /><br />
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" placeholder="Digite uma senha segura" required /><br />
+
+        <label for="permissoes">Permissões de Acesso:</label>
+        <textarea id="permissoes" name="permissoes" placeholder="Descreva as permissões de acesso"
+            rows="4"></textarea><br />
 
         <button type="submit">Salvar</button>
     </form>
     <br>
+    <a href="./list.html">Voltar para a listagem</a>
 
     <script>
+        // Função para salvar o usuário via Fetch API
         document.getElementById('usuarioForm').addEventListener('submit', async function (event) {
             event.preventDefault();
 
             const nome = document.getElementById('nome').value;
             const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+            const permissoes = document.getElementById('permissoes').value;
 
             const usuario = {
                 nome: nome,
-                email: email
+                email: email,
+                senha: senha,
+                permissoes: permissoes
             };
 
-            try {
-                const response = await fetch('http://localhost:8080/usuarios', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(usuario)
+            // Envia o objeto 'usuario' para a API
+            fetch('http://localhost:8080/usuarios', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(usuario)
+            })
+                .then(function (res) {
+                    if (res.ok) {
+                        // Redireciona para a lista após o sucesso
+                        window.location.href = './list.html';
+                    } else {
+                        console.error("Erro ao salvar o usuário.");
+                    }
+                })
+                .catch(function (err) {
+                    console.error("Erro na requisição:", err);
                 });
-
-                if (response.ok) {
-                    // Redireciona para a página de listagem após sucesso
-                    window.location.href = './list.html';
-                } else {
-                    console.error('Erro ao salvar usuário:', response.statusText);
-                    alert('Não foi possível salvar o usuário. Verifique os dados e tente novamente.');
-                }
-            } catch (error) {
-                console.error('Erro ao realizar o request:', error);
-                alert('Ocorreu um erro ao salvar o usuário. Por favor, tente novamente.');
-            }
         });
     </script>
-
 
 </body>
 
