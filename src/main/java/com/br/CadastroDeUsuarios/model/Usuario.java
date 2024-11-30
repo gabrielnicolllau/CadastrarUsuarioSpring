@@ -11,14 +11,23 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Nome é obrigatório")
+    @Size(min = 3, max = 100, message = "O nome deve ter entre 3 e 100 caracteres")
     private String nome;
+
+    @NotBlank(message = "Email é obrigatório")
     private String email;
+
+    @NotBlank(message = "Senha é obrigatória")
+    @Size(min = 1, message = "A senha deve ter no mínimo 6 caracteres")
     private String senha;
 
-    @Column(length = 1000) // Permite textos longos
+    @NotBlank(message = "Permissões são obrigatórias")
+    @Size(max = 200, message = "As permissões devem ter no máximo 1000 caracteres")
+
+    @Column(length = 200)
     private String permissoes;
 
-    // Getters e Setters
     public Long getId() {
         return id;
     }
@@ -58,5 +67,4 @@ public class Usuario {
     public void setPermissoes(String permissoes) {
         this.permissoes = permissoes;
     }
-
 }

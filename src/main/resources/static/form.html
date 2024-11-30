@@ -10,31 +10,32 @@
 </head>
 
 <body>
-    <h1>Incluir um novo usuário</h1>
-    <form id="usuarioForm">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" placeholder="Digite o nome completo" />
-        <div id="nomeError" class="error-message"></div><br />
+    <main>
+        <h1>Incluir um novo usuário</h1>
+        <form id="formularioUsuario">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite o nome completo" />
+            <div id="erro-nome" class="mensagem-de-erro"></div><br />
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="Digite o email" />
-        <div id="emailError" class="error-message"></div><br />
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Digite o email" />
+            <div id="erro-email" class="mensagem-de-erro"></div><br />
 
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha" placeholder="Digite uma senha segura" />
-        <div id="senhaError" class="error-message"></div><br />
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" placeholder="Digite uma senha segura" />
+            <div id="erro-senha" class="mensagem-de-erro"></div><br />
 
-        <label for="permissoes">Permissões de Acesso:</label>
-        <textarea id="permissoes" name="permissoes"
-            placeholder="Permissões separadas por vírgula (ex: vendedor, gerente)" rows="4"></textarea>
-        <div id="permissoesError" class="error-message"></div><br />
+            <label for="permissoes">Permissões de Acesso:</label>
+            <textarea id="permissoes" name="permissoes"
+                placeholder="Permissões separadas por vírgula (ex: vendedor, gerente)" rows="4"></textarea>
+            <div id="erro-permissao" class="mensagem-de-erro"></div><br />
 
-        <div class="botao-container">
-            <a class="botao-acao" href="./list.html">Voltar</a>
-            <button class="botao-acao" type="submit">Salvar</button>
-        </div>
-    </form>
-
+            <div class="botao-container">
+                <a class="botao-acao" href="./list.html">Voltar</a>
+                <button class="botao-acao" type="submit">Salvar</button>
+            </div>
+        </form>
+    </main>
 </body>
 
 </html>

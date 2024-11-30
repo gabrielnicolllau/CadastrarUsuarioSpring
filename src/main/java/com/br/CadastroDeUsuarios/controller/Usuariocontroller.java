@@ -18,28 +18,17 @@ import jakarta.validation.Valid;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/usuarios") // Define uma rota padrão para os GetMapping
+@RequestMapping("/usuarios")
 public class Usuariocontroller {
 
     @Autowired
     private UsuarioService usuarioService;
 
-    /**
-     * Cria um novo usuário.
-     * 
-     * @param usuario o usuário a ser criado.
-     * @return o usuário criado.
-     */
     @PostMapping
     public ResponseEntity<Usuario> criarUsuario(@Valid @RequestBody Usuario usuario) {
         return ResponseEntity.status(201).body(usuarioService.salvarUsuario(usuario));
     }
 
-    /**
-     * Lista todos os usuários.
-     * 
-     * @return uma lista de todos os usuários.
-     */
     @GetMapping()
     public ResponseEntity<List<Usuario>> listaUsuarios() {
         List<Usuario> lista = usuarioService.listarUsuarios();
